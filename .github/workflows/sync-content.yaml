@@ -1,0 +1,39 @@
+name: Sync content submodule
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-content
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          token: ${{ secrets.VAULT_PAT }}
+          persist-credentials: true
+
+      - name: Fetch latest content
+        run: git submodule update --remote --merge content
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet --exit-code -- content; then
+            echo "Submodule already up to date."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content
+          git commit -m "chore: bump content submodule"
+          git push
