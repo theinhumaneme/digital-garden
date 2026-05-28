@@ -19,6 +19,9 @@
     "test": "tsx --test",
     "profile": "0x -D prof ./quartz/bootstrap-cli.mjs build --concurrency=1",
     "install-plugins": "npx tsx ./quartz/plugins/loader/install-plugins.ts",
+    "transform-content": "node ./scripts/build-content.mjs",
+    "build": "npm run transform-content && npx quartz build -d content-build",
+    "serve": "npm run transform-content && npx quartz build --serve -d content-build",
     "prebuild": "npm run install-plugins"
   },
   "engines": {

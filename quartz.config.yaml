@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: Quartz 5
-  pageTitleSuffix: ""
+  pageTitle: Digital Garden
+  pageTitleSuffix: " — Kalyan Mudumby"
   enableSPA: true
   enablePopovers: true
   analytics:
@@ -97,6 +97,10 @@ plugins:
     order: 60
   - source: github:quartz-community/description
     enabled: true
+    options:
+      descriptionLength: 200
+      maxDescriptionLength: 300
+      replaceExternalLinks: true
     order: 70
   - source: github:quartz-community/latex
     enabled: true
@@ -143,10 +147,19 @@ plugins:
     options:
       enableSiteMap: true
       enableRSS: true
+      rssLimit: 20
+      rssFullHtml: false
+      includeEmptyFiles: false
   - source: github:quartz-community/favicon
     enabled: true
   - source: github:quartz-community/og-image
     enabled: true
+    options:
+      colorScheme: lightMode
+      width: 1200
+      height: 630
+      defaultTitle: Digital Garden
+      defaultDescription: Notes by Kalyan Mudumby — a living archive of what I'm learning, building, and thinking about.
   - source: github:quartz-community/cname
     enabled: true
   - source: github:quartz-community/canvas-page
@@ -193,7 +206,7 @@ plugins:
       position: beforeBody
       priority: 20
   - source: github:quartz-community/tag-list
-    enabled: false
+    enabled: true
     layout:
       position: beforeBody
       priority: 30
@@ -232,8 +245,10 @@ plugins:
     enabled: true
     options:
       links:
-        GitHub: https://github.com/jackyzha0/quartz
-        Discord Community: https://discord.gg/cRFFHYye7t
+        Website: https://kalyanmudumby.com
+        GitHub: https://github.com/theinhumaneme
+        LinkedIn: https://www.linkedin.com/in/kalyan-mudumby/
+        Email: mailto:mudumbykalyan@gmail.com
   - source: github:quartz-community/recent-notes
     enabled: false
   - source: github:quartz-community/spacer
@@ -274,7 +289,7 @@ plugins:
     options:
       theme: default
   - source: github:quartz-community/obsidian-plugin-excalidraw
-    enabled: true
+    enabled: false
     options:
       enableInteraction: false
       darkMode: auto
