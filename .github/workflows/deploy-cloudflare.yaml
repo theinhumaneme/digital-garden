@@ -47,8 +47,11 @@ jobs:
       - name: Install Quartz plugins
         run: npx quartz plugin install
 
+      - name: Transform content (rewrite Excalidraw embeds → PNG)
+        run: npm run transform-content
+
       - name: Build Quartz
-        run: npx quartz build -v
+        run: npx quartz build -d content-build -v
 
       - name: Deploy to Cloudflare Pages
         uses: AdrianGonz97/refined-cf-pages-action@v1
