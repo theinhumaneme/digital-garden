@@ -13,9 +13,11 @@ configuration:
     - templates
     - .obsidian
     - .trash
+    - 00-Bases
     - 00-academics
     - 01-personal
     - 05-recipes
+    - 04-books
     - 999-archives
     - 999-daily-notes
     - 02-projects
@@ -149,7 +151,7 @@ plugins:
       enableRSS: true
       rssLimit: 20
       rssFullHtml: false
-      includeEmptyFiles: false
+      includeEmptyFiles: true
   - source: github:quartz-community/favicon
     enabled: true
   - source: github:quartz-community/og-image
