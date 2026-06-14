@@ -25,7 +25,11 @@ export default (() => {
     const url = new URL(`https://${cfg.baseUrl ?? "example.com"}`)
     const path = url.pathname as FullSlug
     const baseDir = fileData.slug === "404" ? path : pathToRoot(fileData.slug!)
-    const iconPath = joinSegments(baseDir, "static/icon.png")
+    const iconPath = joinSegments(baseDir, "static/favicon/favicon.ico")
+    const icon16Path = joinSegments(baseDir, "static/favicon/favicon-16x16.png")
+    const icon32Path = joinSegments(baseDir, "static/favicon/favicon-32x32.png")
+    const appleTouchIconPath = joinSegments(baseDir, "static/favicon/apple-touch-icon.png")
+    const manifestPath = joinSegments(baseDir, "static/favicon/site.webmanifest")
 
     // Url of current page
     const socialUrl =
@@ -91,7 +95,12 @@ export default (() => {
           </>
         )}
 
-        <link rel="icon" href={iconPath} />
+        <link rel="icon" href={iconPath} sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href={icon32Path} />
+        <link rel="icon" type="image/png" sizes="16x16" href={icon16Path} />
+        <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIconPath} />
+        <link rel="manifest" href={manifestPath} />
+        <meta name="theme-color" content="#ffffff" />
         <meta name="description" content={description} />
         <meta name="generator" content="Quartz" />
 
