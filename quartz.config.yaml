@@ -155,7 +155,7 @@ plugins:
   - source: github:quartz-community/favicon
     enabled: true
   - source: github:quartz-community/og-image
-    enabled: true
+    enabled: false
     options:
       colorScheme: lightMode
       width: 1200
@@ -263,7 +263,8 @@ plugins:
       display: mobile-only
   - source: github:quartz-community/bases-page
     enabled: true
-    options: {}
+    options:
+      defaultViewType: cards
     order: 50
   - source: github:quartz-community/note-properties
     enabled: true
